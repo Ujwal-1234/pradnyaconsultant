@@ -7,7 +7,16 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
-
+  function sendNoReplyEmail(to, subject, body) {
+    const mailtoLink = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoLink;
+  }
+  
+  // Usage example
+  const mail = ()=>{
+    sendNoReplyEmail('kujwal147@gmail.com', 'Subject of the Email', 'Body of the email...');
+  }
+  
   
   useEffect(() => {
     const handleScroll = () => {
@@ -195,7 +204,7 @@ export default function App() {
             <input type='text' className=' w-3/4 m-2 rounded-full border p-2 border-black text-center bg-opacity-50 shadow-inner text-xl shadow-black' placeholder='CONTACT'/>
             <input type='text' className=' w-3/4 m-2 rounded-full border p-2 border-black text-center bg-opacity-50 shadow-inner text-xl shadow-black' placeholder='SUBJECT'/>
             <textarea style={{maxHeight:'100px'}} className=' w-3/4 rounded-full border p-2 border-black text-center bg-opacity-50 shadow-inner text-xl shadow-black' placeholder='DESCRIBE YOUR QUERY'/>
-            <input type='submit' className=' w-3/4 m-2 rounded-full hover:cursor-pointer hover:shadow-white border p-2 border-black text-center bg-black text-white bg-opacity-50 shadow-inner text-xl shadow-black' value={"SUBMIT"}/>
+            <input type='submit' onClick={mail} className=' w-3/4 m-2 rounded-full hover:cursor-pointer hover:shadow-white border p-2 border-black text-center bg-black text-white bg-opacity-50 shadow-inner text-xl shadow-black' value={"SUBMIT"}/>
 
           </form>
         </div>
